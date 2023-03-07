@@ -48,4 +48,15 @@ class AuthRepository {
       return false;
     }
   }
+
+  Future<bool> signOut() async {
+    try {
+      await firebaseAuth.signOut();
+      await googleSignIn.signOut();
+      return true;
+    } catch (e) {
+      debugPrint('$e');
+      return false;
+    }
+  }
 }

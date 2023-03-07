@@ -25,7 +25,7 @@ class SignInScreen extends StatelessWidget {
                   icon: FaIcon(FontAwesomeIcons.google),
                   label: Text('Google Sign-In'),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 16.0),
               ],
               if (Platform.isIOS || Platform.isMacOS)
                 ElevatedButton.icon(
