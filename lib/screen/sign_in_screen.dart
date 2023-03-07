@@ -1,14 +1,15 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo_flutter/repository/auth_repository.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends ConsumerWidget {
   const SignInScreen({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
+  Widget build(BuildContext context, WidgetRef ref) => Scaffold(
         appBar: AppBar(
           title: const Text('Sign-In'),
         ),
@@ -19,7 +20,7 @@ class SignInScreen extends StatelessWidget {
               if (!Platform.isMacOS) ...[
                 ElevatedButton.icon(
                   onPressed: () {
-                    final repository = AuthRepository();
+                    final repository = ref.read(authRepositoryProvider);
                     repository.signInWithGoogle();
                   },
                   icon: const FaIcon(FontAwesomeIcons.google),
@@ -30,7 +31,7 @@ class SignInScreen extends StatelessWidget {
               if (Platform.isIOS || Platform.isMacOS)
                 ElevatedButton.icon(
                   onPressed: () {
-                    final repository = AuthRepository();
+                    final repository = ref.read(authRepositoryProvider);
                     repository.signInWithApple();
                   },
                   icon: const FaIcon(FontAwesomeIcons.apple),

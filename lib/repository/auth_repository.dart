@@ -1,11 +1,26 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:sign_in_with_apple/sign_in_with_apple.dart';
+import 'package:todo_flutter/provider/top_level_providers.dart';
+
+part 'auth_repository.g.dart';
+
+@riverpod
+AuthRepository authRepository(AuthRepositoryRef ref) => AuthRepository(
+      googleSignIn: ref.watch(googleSignInProvider),
+      firebaseAuth: ref.watch(firebaseAuthProvider),
+    );
 
 class AuthRepository {
-  final firebaseAuth = FirebaseAuth.instance;
-  final googleSignIn = GoogleSignIn();
+  AuthRepository({
+    required this.firebaseAuth,
+    required this.googleSignIn,
+  });
+
+  final FirebaseAuth firebaseAuth;
+  final GoogleSignIn googleSignIn;
 
   Stream get authStateChanges => firebaseAuth.authStateChanges();
 
