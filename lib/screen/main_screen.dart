@@ -16,7 +16,7 @@ class MainScreen extends StatelessWidget {
                 repository.signOut();
               },
             ),
-            SizedBox(width: 12.0),
+            const SizedBox(width: 12.0),
           ],
         ),
         body: const Center(child: Text('Main Screen')),

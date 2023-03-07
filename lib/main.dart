@@ -20,5 +20,5 @@ void main() async {
     return true;
   };
 
-  runApp(ProviderScope(child: const App()));
+  runApp(const ProviderScope(child: App()));
 }

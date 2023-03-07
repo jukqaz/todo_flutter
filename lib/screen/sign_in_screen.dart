@@ -22,10 +22,10 @@ class SignInScreen extends StatelessWidget {
                     final repository = AuthRepository();
                     repository.signInWithGoogle();
                   },
-                  icon: FaIcon(FontAwesomeIcons.google),
-                  label: Text('Google Sign-In'),
+                  icon: const FaIcon(FontAwesomeIcons.google),
+                  label: const Text('Google Sign-In'),
                 ),
-                SizedBox(height: 16.0),
+                const SizedBox(height: 16.0),
               ],
               if (Platform.isIOS || Platform.isMacOS)
                 ElevatedButton.icon(
@@ -33,8 +33,8 @@ class SignInScreen extends StatelessWidget {
                     final repository = AuthRepository();
                     repository.signInWithApple();
                   },
-                  icon: FaIcon(FontAwesomeIcons.apple),
-                  label: Text('Apple Sign-In'),
+                  icon: const FaIcon(FontAwesomeIcons.apple),
+                  label: const Text('Apple Sign-In'),
                 ),
             ],
           ),
