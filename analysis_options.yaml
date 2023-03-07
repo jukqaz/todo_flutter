@@ -1,8 +1,13 @@
 analyzer:
+  errors:
+    invalid_annotation_target: ignore
   plugins:
     - custom_lint
 
 custom_lint:
+  # - missing_provider_scope
+
+linter:
   rules:
     - prefer_single_quotes
     - always_use_package_imports

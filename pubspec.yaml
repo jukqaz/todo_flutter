@@ -16,6 +16,11 @@ dependencies:
 
   # State management
   flutter_riverpod: ^2.3.0
+  riverpod_annotation: ^2.0.0
+
+  # Generate code
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.0
 
   # UI
   cupertino_icons: ^1.0.5
@@ -27,8 +32,15 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+  # Linting
   custom_lint: ^0.2.12
   riverpod_lint: ^1.1.2
+
+  # Generate code
+  build_runner: ^2.3.3
+  riverpod_generator: ^2.0.0
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
 
 flutter:
   uses-material-design: true
