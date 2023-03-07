@@ -1,4 +1,4 @@
-package com.jukqaz.todo_flutter
+package com.jukqaz.todo
 
 import io.flutter.embedding.android.FlutterActivity
 
