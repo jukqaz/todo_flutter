@@ -12,10 +12,7 @@ class MainScreen extends ConsumerWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.logout),
-              onPressed: () async {
-                final repository = ref.read(authRepositoryProvider);
-                repository.signOut();
-              },
+              onPressed: () => ref.read(authRepositoryProvider).signOut(),
             ),
             const SizedBox(width: 12.0),
           ],

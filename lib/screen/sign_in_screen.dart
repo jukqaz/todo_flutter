@@ -18,10 +18,7 @@ class SignInScreen extends ConsumerWidget {
             children: [
               if (isGoogleSignInAvailable) ...[
                 ElevatedButton.icon(
-                  onPressed: () {
-                    final repository = ref.read(authRepositoryProvider);
-                    repository.signInWithGoogle();
-                  },
+                  onPressed: () => ref.read(authRepositoryProvider).signInWithGoogle(),
                   icon: const FaIcon(FontAwesomeIcons.google),
                   label: const Text('Google Sign-In'),
                 ),
@@ -29,10 +26,7 @@ class SignInScreen extends ConsumerWidget {
               ],
               if (isAppleSignInAvailable)
                 ElevatedButton.icon(
-                  onPressed: () {
-                    final repository = ref.read(authRepositoryProvider);
-                    repository.signInWithApple();
-                  },
+                  onPressed: () => ref.read(authRepositoryProvider).signInWithApple(),
                   icon: const FaIcon(FontAwesomeIcons.apple),
                   label: const Text('Apple Sign-In'),
                 ),
