@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:go_router/go_router.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -13,6 +12,7 @@ import 'package:todo_flutter/screen/sign_in_screen.dart';
 part 'app_router.g.dart';
 
 @riverpod
+// ignore: unsupported_provider_value
 GoRouter goRouter(GoRouterRef ref) => GoRouter(
       initialLocation: routeSignIn,
       debugLogDiagnostics: kDebugMode,
@@ -21,7 +21,7 @@ GoRouter goRouter(GoRouterRef ref) => GoRouter(
       refreshListenable: GoRouterRefreshStream(ref.watch(authRepositoryProvider).authStateChanges),
       redirect: (context, state) {
         final areWeLoggingIn = state.location == routeSignIn;
-        final user = FirebaseAuth.instance.currentUser;
+        final user = ref.watch(firebaseAuthProvider).currentUser;
         if (user == null) return areWeLoggingIn ? null : routeSignIn;
         if (areWeLoggingIn) return routeMain;
         return null;
