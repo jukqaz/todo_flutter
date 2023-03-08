@@ -1,9 +1,8 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:todo_flutter/repository/auth_repository.dart';
+import 'package:todo_flutter/util/platform.dart';
 
 class SignInScreen extends ConsumerWidget {
   const SignInScreen({super.key});
@@ -17,7 +16,7 @@ class SignInScreen extends ConsumerWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              if (!Platform.isMacOS) ...[
+              if (isGoogleSignInAvailable) ...[
                 ElevatedButton.icon(
                   onPressed: () {
                     final repository = ref.read(authRepositoryProvider);
@@ -28,7 +27,7 @@ class SignInScreen extends ConsumerWidget {
                 ),
                 const SizedBox(height: 16.0),
               ],
-              if (Platform.isIOS || Platform.isMacOS)
+              if (isAppleSignInAvailable)
                 ElevatedButton.icon(
                   onPressed: () {
                     final repository = ref.read(authRepositoryProvider);
