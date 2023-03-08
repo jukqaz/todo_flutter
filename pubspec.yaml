@@ -34,8 +34,9 @@ dependencies:
   # Authentication
   google_sign_in: ^6.0.2
 
-  # Desktop
+  # Util
   window_manager: ^0.3.1
+  uuid: ^3.0.7
 
   # UI
   cupertino_icons: ^1.0.5

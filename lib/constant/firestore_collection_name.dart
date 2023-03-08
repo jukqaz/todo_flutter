@@ -1,0 +1,1 @@
+const collectionTasks = 'tasks';

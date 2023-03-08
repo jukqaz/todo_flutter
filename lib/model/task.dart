@@ -8,12 +8,13 @@ enum TaskStatus { normal, completed, deleted }
 @freezed
 class Task with _$Task {
   const factory Task({
+    required String id,
     required String userId,
     required String title,
     required String description,
     @Default(false) bool isCompleted,
     @Default(false) bool isDeleted,
-    DateTime? createdAt,
+    required DateTime createdAt,
     DateTime? updatedAt,
   }) = _Task;
 
