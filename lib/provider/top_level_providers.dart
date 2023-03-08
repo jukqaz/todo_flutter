@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
@@ -17,3 +19,9 @@ FirebaseAnalytics firebaseAnalytics(FirebaseAnalyticsRef ref) => FirebaseAnalyti
 @riverpod
 FirebaseAnalyticsObserver firebaseAnalyticsObserver(FirebaseAnalyticsObserverRef ref) =>
     FirebaseAnalyticsObserver(analytics: ref.watch(firebaseAnalyticsProvider));
+
+@riverpod
+FirebaseFirestore firebaseFirestore(FirebaseFirestoreRef ref) => FirebaseFirestore.instance;
+
+@riverpod
+FirebaseStorage firebaseStorage(FirebaseStorageRef ref) => FirebaseStorage.instance;

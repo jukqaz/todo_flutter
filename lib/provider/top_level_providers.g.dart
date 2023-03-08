@@ -68,4 +68,35 @@ final firebaseAnalyticsObserverProvider =
 
 typedef FirebaseAnalyticsObserverRef
     = AutoDisposeProviderRef<FirebaseAnalyticsObserver>;
+String _$firebaseFirestoreHash() => r'bcd0de65a93e6108353c348ea0c88ca8795a64ae';
+
+/// See also [firebaseFirestore].
+@ProviderFor(firebaseFirestore)
+final firebaseFirestoreProvider =
+    AutoDisposeProvider<FirebaseFirestore>.internal(
+  firebaseFirestore,
+  name: r'firebaseFirestoreProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$firebaseFirestoreHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FirebaseFirestoreRef = AutoDisposeProviderRef<FirebaseFirestore>;
+String _$firebaseStorageHash() => r'ee51676c16a06f67a861c29f61a5fd9cbaab8f82';
+
+/// See also [firebaseStorage].
+@ProviderFor(firebaseStorage)
+final firebaseStorageProvider = AutoDisposeProvider<FirebaseStorage>.internal(
+  firebaseStorage,
+  name: r'firebaseStorageProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$firebaseStorageHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FirebaseStorageRef = AutoDisposeProviderRef<FirebaseStorage>;
 // ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions

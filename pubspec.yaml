@@ -29,6 +29,7 @@ dependencies:
   firebase_crashlytics: ^3.0.15
   cloud_firestore: ^4.4.3
   firebase_storage: ^11.0.14
+  firebase_ui_firestore: ^1.2.9
 
   # Authentication
   google_sign_in: ^6.0.2
