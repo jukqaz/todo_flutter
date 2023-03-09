@@ -29,3 +29,26 @@ Map<String, dynamic> _$$_TaskToJson(_$_Task instance) => <String, dynamic>{
       'createdAt': instance.createdAt.toIso8601String(),
       'updatedAt': instance.updatedAt?.toIso8601String(),
     };
+
+// **************************************************************************
+// RiverpodGenerator
+// **************************************************************************
+
+String _$taskFilterNotifierHash() =>
+    r'd8df88888d5b49513f9d249e6d842c6e428fe9ea';
+
+/// See also [TaskFilterNotifier].
+@ProviderFor(TaskFilterNotifier)
+final taskFilterNotifierProvider =
+    AutoDisposeNotifierProvider<TaskFilterNotifier, TaskFilter>.internal(
+  TaskFilterNotifier.new,
+  name: r'taskFilterNotifierProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$taskFilterNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef _$TaskFilterNotifier = AutoDisposeNotifier<TaskFilter>;
+// ignore_for_file: unnecessary_raw_strings, subtype_of_sealed_class, invalid_use_of_internal_member, do_not_use_environment, prefer_const_constructors, public_member_api_docs, avoid_private_typedef_functions
