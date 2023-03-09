@@ -4,10 +4,12 @@ import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 import 'package:todo_flutter/model/task.dart';
 import 'package:todo_flutter/provider/top_level_providers.dart';
 import 'package:todo_flutter/repository/auth_repository.dart';
 import 'package:todo_flutter/repository/task_repository.dart';
+import 'package:todo_flutter/widget/no_tasks.dart';
 import 'package:uuid/uuid.dart';
 
 class MainScreen extends ConsumerWidget {
@@ -31,8 +33,8 @@ class MainScreen extends ConsumerWidget {
       body: FirestoreListView<Task>(
         query: ref.watch(taskRepositoryProvider).getTasks(user.uid),
         loadingBuilder: (context) => const Center(child: CupertinoActivityIndicator()),
-        errorBuilder: (context, _, __) => const _NoTasks(),
-        emptyBuilder: (context) => const _NoTasks(),
+        errorBuilder: (context, _, __) => const NoTasks(),
+        emptyBuilder: (context) => const NoTasks(),
         itemBuilder: (context, doc) {
           final task = doc.data();
           return DecoratedBox(
@@ -45,6 +47,7 @@ class MainScreen extends ConsumerWidget {
               subtitle: Text(task.description),
               trailing: Text('Created at: ${task.createdAt}'),
               tileColor: task.isCompleted ? Colors.white24 : Theme.of(context).primaryColor,
+              onTap: () => context.push('/task/${task.id}'),
             ),
           );
         },
@@ -65,11 +68,4 @@ class MainScreen extends ConsumerWidget {
       ),
     );
   }
-}
-
-class _NoTasks extends StatelessWidget {
-  const _NoTasks();
-
-  @override
-  Widget build(BuildContext context) => const Center(child: Text('No tasks'));
 }

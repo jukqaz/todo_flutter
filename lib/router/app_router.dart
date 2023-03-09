@@ -8,6 +8,7 @@ import 'package:todo_flutter/router/go_router_refresh_stream.dart';
 import 'package:todo_flutter/screen/error_screen.dart';
 import 'package:todo_flutter/screen/main_screen.dart';
 import 'package:todo_flutter/screen/sign_in_screen.dart';
+import 'package:todo_flutter/screen/task_detail_screen.dart';
 
 part 'app_router.g.dart';
 
@@ -34,6 +35,10 @@ GoRouter goRouter(GoRouterRef ref) => GoRouter(
         GoRoute(
           path: '/',
           builder: (context, state) => const MainScreen(),
+        ),
+        GoRoute(
+          path: '/task/:taskId',
+          builder: (context, state) => TaskDetailScreen(taskId: state.params['taskId']!),
         ),
       ],
     );
