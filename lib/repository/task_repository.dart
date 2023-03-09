@@ -35,7 +35,7 @@ class TaskRepository {
       collectionRef.where('userId', isEqualTo: userId).orderBy('createdAt', descending: true);
 
   Future<void> addTask(Task task) async {
-    await collectionRef.add(task);
+    await collectionRef.doc(task.id).set(task);
   }
 
   Future<void> modifyTask(Task task) async {
