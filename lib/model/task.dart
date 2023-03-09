@@ -9,7 +9,7 @@ enum TaskStatus { normal, completed, deleted }
 class Task with _$Task {
   const factory Task({
     required String id,
-    required String userId,
+    required String? email,
     required String title,
     required String description,
     @Default(false) bool isCompleted,

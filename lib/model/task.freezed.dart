@@ -21,7 +21,7 @@ Task _$TaskFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Task {
   String get id => throw _privateConstructorUsedError;
-  String get userId => throw _privateConstructorUsedError;
+  String? get email => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
@@ -41,7 +41,7 @@ abstract class $TaskCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
+      String? email,
       String title,
       String description,
       bool isCompleted,
@@ -64,7 +64,7 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
+    Object? email = freezed,
     Object? title = null,
     Object? description = null,
     Object? isCompleted = null,
@@ -77,10 +77,10 @@ class _$TaskCopyWithImpl<$Res, $Val extends Task>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -117,7 +117,7 @@ abstract class _$$_TaskCopyWith<$Res> implements $TaskCopyWith<$Res> {
   @useResult
   $Res call(
       {String id,
-      String userId,
+      String? email,
       String title,
       String description,
       bool isCompleted,
@@ -136,7 +136,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
   @override
   $Res call({
     Object? id = null,
-    Object? userId = null,
+    Object? email = freezed,
     Object? title = null,
     Object? description = null,
     Object? isCompleted = null,
@@ -149,10 +149,10 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as String,
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as String,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
       title: null == title
           ? _value.title
           : title // ignore: cast_nullable_to_non_nullable
@@ -186,7 +186,7 @@ class __$$_TaskCopyWithImpl<$Res> extends _$TaskCopyWithImpl<$Res, _$_Task>
 class _$_Task implements _Task {
   const _$_Task(
       {required this.id,
-      required this.userId,
+      required this.email,
       required this.title,
       required this.description,
       this.isCompleted = false,
@@ -199,7 +199,7 @@ class _$_Task implements _Task {
   @override
   final String id;
   @override
-  final String userId;
+  final String? email;
   @override
   final String title;
   @override
@@ -217,7 +217,7 @@ class _$_Task implements _Task {
 
   @override
   String toString() {
-    return 'Task(id: $id, userId: $userId, title: $title, description: $description, isCompleted: $isCompleted, isDeleted: $isDeleted, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Task(id: $id, email: $email, title: $title, description: $description, isCompleted: $isCompleted, isDeleted: $isDeleted, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -226,7 +226,7 @@ class _$_Task implements _Task {
         (other.runtimeType == runtimeType &&
             other is _$_Task &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.email, email) || other.email == email) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
                 other.description == description) &&
@@ -242,7 +242,7 @@ class _$_Task implements _Task {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, userId, title, description,
+  int get hashCode => Object.hash(runtimeType, id, email, title, description,
       isCompleted, isDeleted, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
@@ -262,7 +262,7 @@ class _$_Task implements _Task {
 abstract class _Task implements Task {
   const factory _Task(
       {required final String id,
-      required final String userId,
+      required final String? email,
       required final String title,
       required final String description,
       final bool isCompleted,
@@ -275,7 +275,7 @@ abstract class _Task implements Task {
   @override
   String get id;
   @override
-  String get userId;
+  String? get email;
   @override
   String get title;
   @override

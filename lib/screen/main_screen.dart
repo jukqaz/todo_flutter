@@ -17,7 +17,7 @@ class MainScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(firebaseAuthProvider).currentUser!;
+    final email = ref.watch(firebaseAuthProvider).currentUser?.email;
 
     return Scaffold(
       appBar: AppBar(
@@ -31,7 +31,7 @@ class MainScreen extends ConsumerWidget {
         ],
       ),
       body: FirestoreListView<Task>(
-        query: ref.watch(taskRepositoryProvider).getTasks(user.uid),
+        query: ref.watch(taskRepositoryProvider).getTasks(email),
         loadingBuilder: (context) => const Center(child: CupertinoActivityIndicator()),
         errorBuilder: (context, _, __) => const NoTasks(),
         emptyBuilder: (context) => const NoTasks(),
@@ -57,7 +57,7 @@ class MainScreen extends ConsumerWidget {
           ref.read(taskRepositoryProvider).addTask(
                 Task(
                   id: const Uuid().v4(),
-                  userId: user.uid,
+                  email: email,
                   title: 'New task ${Random().nextInt(10000)}',
                   description: 'New task description ${Random().nextInt(10000)}',
                   createdAt: DateTime.now(),

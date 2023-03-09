@@ -31,8 +31,8 @@ class TaskRepository {
     return snapshot.docs.isNotEmpty ? snapshot.docs[0].data() : null;
   }
 
-  Query<Task> getTasks(String userId) =>
-      collectionRef.where('userId', isEqualTo: userId).orderBy('createdAt', descending: true);
+  Query<Task> getTasks(String? email) =>
+      collectionRef.where('email', isEqualTo: email).orderBy('createdAt', descending: true);
 
   Future<void> addTask(Task task) async {
     await collectionRef.doc(task.id).set(task);
