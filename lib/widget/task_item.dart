@@ -20,6 +20,13 @@ class TaskItem extends ConsumerWidget {
           endActionPane: ActionPane(
             motion: const StretchMotion(),
             children: [
+              SlidableAction(
+                onPressed: (_) => ref.watch(taskRepositoryProvider).deleteTask(task.id),
+                backgroundColor: Colors.redAccent,
+                foregroundColor: Colors.white,
+                icon: Icons.delete,
+                label: 'Delete',
+              ),
               if (task.isCompleted)
                 SlidableAction(
                   onPressed: (_) => ref.watch(taskRepositoryProvider).modifyTask(
