@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:todo_flutter/extension/list_extension.dart';
 import 'package:todo_flutter/model/task.dart';
 
 part 'task_repository.g.dart';
@@ -31,8 +30,8 @@ class TaskRepository {
   final TaskFilter taskFilter;
 
   Future<Task?> getTask(String taskId) async {
-    final snapshot = await collectionRef.where('id', isEqualTo: taskId).get();
-    return snapshot.docs.firstOrNull?.data();
+    final snapshot = await collectionRef.doc(taskId).get();
+    return snapshot.data();
   }
 
   Query<Task> getTasks(String? email) {

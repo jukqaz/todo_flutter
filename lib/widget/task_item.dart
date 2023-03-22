@@ -50,8 +50,16 @@ class TaskItem extends ConsumerWidget {
             ],
           ),
           child: ListTile(
-            title: Text(task.title),
-            subtitle: Text(task.description),
+            title: Text(
+              task.title,
+              maxLines: 1,
+              style: const TextStyle(overflow: TextOverflow.ellipsis),
+            ),
+            subtitle: Text(
+              task.description,
+              maxLines: 1,
+              style: const TextStyle(overflow: TextOverflow.ellipsis),
+            ),
             trailing: Text('Created at: ${task.createdAt}'),
             tileColor: task.isCompleted ? Colors.white24 : Theme.of(context).primaryColor,
             onTap: () => context.push('/task/${task.id}'),
