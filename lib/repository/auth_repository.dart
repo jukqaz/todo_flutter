@@ -13,6 +13,9 @@ AuthRepository authRepository(AuthRepositoryRef ref) => AuthRepository(
       firebaseAuth: ref.watch(firebaseAuthProvider),
     );
 
+@riverpod
+String? getEmail(GetEmailRef ref) => ref.watch(firebaseAuthProvider).currentUser?.email;
+
 class AuthRepository {
   AuthRepository({
     required this.firebaseAuth,
