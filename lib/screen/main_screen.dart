@@ -52,7 +52,7 @@ class MainScreen extends ConsumerWidget {
       body: FirestoreListView<Task>(
         query: ref.watch(taskRepositoryProvider).getTasks(email),
         loadingBuilder: (context) => const Center(child: CupertinoActivityIndicator()),
-        errorBuilder: (context, error, __) => Text('$error'),
+        errorBuilder: (context, error, __) => Center(child: Text('$error')),
         emptyBuilder: (context) => const NoTasks(),
         itemBuilder: (context, doc) => TaskItem(task: doc.data()),
       ),
