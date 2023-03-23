@@ -57,9 +57,10 @@ class MainScreen extends ConsumerWidget {
             context: context,
             enableDrag: false,
             isDismissible: true,
-            builder: (context) => const Padding(
-              padding: EdgeInsets.all(20.0),
-              child: _CreateTaskForm(),
+            isScrollControlled: true,
+            builder: (context) => Padding(
+              padding: const EdgeInsets.all(20).copyWith(bottom: context.mediaQuery.viewInsets.bottom),
+              child: const _CreateTaskForm(),
             ),
           ),
           child: const Icon(Icons.add),
@@ -75,6 +76,7 @@ class _CreateTaskForm extends ConsumerWidget {
     final task = ref.watch(createTaskProvider);
 
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         TextField(
           autofocus: true,
@@ -86,41 +88,36 @@ class _CreateTaskForm extends ConsumerWidget {
         const SizedBox(height: 16.0),
         TextField(
           decoration: const InputDecoration(hintText: 'Task description'),
-          minLines: 3,
-          maxLines: 3,
           maxLength: 500,
+          minLines: 6,
+          maxLines: 6,
           onChanged: ref.read(createTaskProvider.notifier).updateDescription,
         ),
         const SizedBox(height: 16.0),
-        Expanded(
-          child: Center(
-            child: SizedBox(
-              width: context.mediaSize.width / 2,
-              child: ElevatedButton(
-                onPressed: ref.watch(createTaskProvider.notifier).isEnabled
-                    ? () async {
-                        final goRouter = GoRouter.of(context);
-                        final scaffoldMessenger = ScaffoldMessenger.of(context);
-                        try {
-                          await ref
-                              .read(taskRepositoryProvider)
-                              .addTask(task.copyWith(email: ref.read(getEmailProvider)));
+        SizedBox(
+          width: context.mediaSize.width / 2,
+          child: ElevatedButton(
+            onPressed: ref.watch(createTaskProvider.notifier).isEnabled
+                ? () async {
+                    final goRouter = GoRouter.of(context);
+                    final scaffoldMessenger = ScaffoldMessenger.of(context);
+                    try {
+                      await ref.read(taskRepositoryProvider).addTask(task.copyWith(email: ref.read(getEmailProvider)));
 
-                          scaffoldMessenger.showSnackBar(const SnackBar(content: Text('Successfully added task')));
-                        } catch (e) {
-                          scaffoldMessenger.showSnackBar(
-                            SnackBar(content: Text('Failure adding task: $e'), backgroundColor: Colors.redAccent),
-                          );
-                        }
+                      scaffoldMessenger.showSnackBar(const SnackBar(content: Text('Successfully added task')));
+                    } catch (e) {
+                      scaffoldMessenger.showSnackBar(
+                        SnackBar(content: Text('Failure adding task: $e'), backgroundColor: Colors.redAccent),
+                      );
+                    }
 
-                        goRouter.pop();
-                      }
-                    : null,
-                child: const Text('OK'),
-              ),
-            ),
+                    goRouter.pop();
+                  }
+                : null,
+            child: const Text('OK'),
           ),
         ),
+        const SizedBox(height: 20.0),
       ],
     );
   }
