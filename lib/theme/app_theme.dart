@@ -19,7 +19,7 @@ final lightTheme = FlexThemeData.light(
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
   useMaterial3: true,
   swapLegacyOnMaterial3: true,
-  fontFamily: GoogleFonts.blackHanSans().fontFamily,
+  fontFamily: GoogleFonts.sunflower().fontFamily,
 );
 
 final darkTheme = FlexThemeData.dark(
@@ -32,5 +32,5 @@ final darkTheme = FlexThemeData.dark(
   visualDensity: FlexColorScheme.comfortablePlatformDensity,
   useMaterial3: true,
   swapLegacyOnMaterial3: true,
-  fontFamily: GoogleFonts.blackHanSans().fontFamily,
+  fontFamily: GoogleFonts.sunflower().fontFamily,
 );
