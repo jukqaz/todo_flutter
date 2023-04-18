@@ -23,5 +23,5 @@ class CreateTask extends _$CreateTask {
     state = state.copyWith(description: description);
   }
 
-  bool get isEnabled => [state.title, state.description].every((element) => element.trim().isNotEmpty);
+  bool isEnabled() => [state.title, state.description].every((element) => element.trim().isNotEmpty);
 }

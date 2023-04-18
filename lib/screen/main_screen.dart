@@ -97,7 +97,7 @@ class _CreateTaskForm extends ConsumerWidget {
         SizedBox(
           width: context.mediaSize.width / 2,
           child: ElevatedButton(
-            onPressed: ref.watch(createTaskProvider.notifier).isEnabled
+            onPressed: ref.watch(createTaskProvider.notifier).isEnabled()
                 ? () async {
                     final goRouter = GoRouter.of(context);
                     final scaffoldMessenger = ScaffoldMessenger.of(context);
