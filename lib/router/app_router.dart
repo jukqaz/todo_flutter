@@ -38,7 +38,7 @@ GoRouter goRouter(GoRouterRef ref) => GoRouter(
         ),
         GoRoute(
           path: '/task/:taskId',
-          builder: (context, state) => TaskDetailScreen(taskId: state.params['taskId']!),
+          builder: (context, state) => TaskDetailScreen(taskId: state.pathParameters['taskId']!),
         ),
       ],
     );
